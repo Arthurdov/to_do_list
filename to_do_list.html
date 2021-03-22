@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To_do_list</title>
+    <style>
+        body{
+            background-color: grey;
+        }
+        h1{
+            color: teal;
+        }
+        li{
+            font-style: oblique;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Task</h1>
+    <ul id="tasks">
+
+
+    </ul>
+
+    
+    <form action="">
+        <input id="task" placeholder="New task" type="text" >
+        <input id="submit" type="submit">
+    </form>
+
+    <script type="text/javascript">
+
+        // by default, submit button is disabled
+        document.querySelector("#submit").disabled = true;
+
+        document.querySelector("#task").onkeyup = () => {
+            if (document.querySelector("#task").value.length > 0) {
+                document.querySelector("#submit").disabled = false;
+            }else{
+                document.querySelector("#submit").disabled = true;
+            }
+        }
+                document.querySelector("form").onsubmit = () => {
+                    const task = document.querySelector ("#task").value;
+                    // console.loog(task);
+
+                    //to create a new element
+                    const li = document.createElement("li");
+                    li.innerHTML = task;
+
+                    document.querySelector("#tasks").append(li);
+
+                    document.querySelector("#task").value = " ";
+                    
+                    // to disabled submit button
+                    document.querySelector("#submit").disabled = true;
+
+                    //stop from submit = this is a submission handler
+                    return false;
+                };
+            
+                </script>
+</body>
+</html>
